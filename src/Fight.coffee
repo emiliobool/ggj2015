@@ -1,0 +1,2 @@
+class Fight
+	constructor: (@world) ->
