@@ -10,5 +10,9 @@ class FightMenu
       #strokeThickness: 2
       shadow: 4
 
-    text = self.game.add.text x, y, "- phaser -\nrocking with\ngoogle web fonts", style
+    text = @game.add.text 10, 210, "Menu 1", style
     text.setShadow 2, 2, 'rgba(0,0,0,0.9)', 0
+
+  update: ->
+    if @cursors.down.isDown
+      @game.state.start 'mapState'

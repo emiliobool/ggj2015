@@ -1,3 +1,0 @@
-class Credits
-  constructor: (@game) ->
-    

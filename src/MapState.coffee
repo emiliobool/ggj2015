@@ -1,6 +1,8 @@
-class Map
-  constructor: (@game) ->
-    @map = game.add.tilemap 'map', 32, 32
+class MapState extends Phaser.State
+  constructor: ->
+    
+  create: ->
+    @map = @game.add.tilemap 'map', 32, 32
     @map.addTilesetImage 'tiles'
     @map.setCollisionBetween 54, 83
     
@@ -14,7 +16,7 @@ class Map
   update: ->
     @game.physics.arcade.collide @player, @layer
     @player.update()
-  destroy: ->
+  shutdown: ->
     @player.destroy()
     @layer.destroy()
     @map.destroy()
