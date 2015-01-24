@@ -3,7 +3,7 @@
 TODO: Write a project description
 
 ## Play It
-
+[WIP](http://ggj2015.emiliobool.com/)
 [Load Game](http://horchatas.github.io/ggj2015/)
 
 ## Contributors
