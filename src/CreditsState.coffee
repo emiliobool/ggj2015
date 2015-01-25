@@ -58,7 +58,7 @@ class CreditsState extends Phaser.State
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
     @runAtProgress 0.5857142857142857, () =>
-      credits_image = @images_group.create 243, 30, 'credits0'
+      credits_image = @images_group.create 243, 30, 'credits6'
       credits_image.alpha = 0
       
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()

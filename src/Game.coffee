@@ -36,6 +36,7 @@ class Game extends Phaser.State
     @game.load.image 'credits3', 'assets/credits/images/3.png'
     @game.load.image 'credits4', 'assets/credits/images/4.png'
     @game.load.image 'credits5', 'assets/credits/images/5.png'
+    @game.load.image 'credits6', 'assets/credits/images/6.png'
     @game.load.image 'credits7', 'assets/credits/images/7.png'
   
     @game.load.text('creditstext', 'assets/credits/text/credits.txt');
