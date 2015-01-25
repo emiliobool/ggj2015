@@ -176,7 +176,11 @@ class FightMenu
     @updateCursor()
 
   action: ->
-    #remove listeners
+    #remove cursor
+    @cursor_text.alpha = 0
+    #disable input
+    @game.input.keyboard.reset true
+    @audio_menu_cursor.play()
     @onProceed()
   #
   # Update Cursor

@@ -4,6 +4,8 @@ class Game extends Phaser.State
     game = new Phaser.Game 640, 360, Phaser.AUTO, 'game', this
     @assets_loaded = false
     @gfonts_loaded = false
+    window.fullscreen = () =>
+      @fullscreen()
 
   loadStart: ->
     @loadingText = @game.add.text @game.world.centerX, @game.world.centerY, 'Loading...', { fill: '#ffffff', align: 'center' }
@@ -73,7 +75,7 @@ class Game extends Phaser.State
 
 
   fullscreen: ->
-    console.log 'f'
+    
     if @game.scale.isFullScreen
       @game.scale.stopFullScreen()
     else

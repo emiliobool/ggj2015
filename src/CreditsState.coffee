@@ -23,4 +23,4 @@ class CreditsState extends Phaser.State
     @progress = 1 - (@creditsSprite.height + @creditsSprite.y) / @creditsSprite.height
     if @progress > 1
       @game.state.start 'mapState'
-    console.log @progress
+    #console.log @progress

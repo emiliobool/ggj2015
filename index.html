@@ -3,15 +3,38 @@
     <head>
         <meta charset="UTF-8" />
         <title>Horchatas Frescas GGJ2015</title>
-        <!-- <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'> -->
+        <style>
+            body{
+                background: #000;
+            }
+            #game{
+                text-align: center;
+            }
+            #fullscreen{
+                padding-top:20px;
+                text-align: center;
+            }
+            #game canvas{
+                display:inline-block !important;
+            }
+            a{
+                color:#FFF;
+            }
+
+
+        </style>
         <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
         <script src="assets/js/game.js"></script>
 
+
     </head>
     <body>
-
-        <div id="game"></div>
+    
+        <div id="game" align="center"></div>
+        <div id="fullscreen">
+            <a href="javascript: window.fullscreen();"> Fullscreen </a>
+        </div>
 
     </body>
 </script>
