@@ -8,7 +8,17 @@ class FightScene
     @hero2  = @group.create 430, 110, 'player'
     @hero3  = @group.create 460, 150, 'player'
 
+    @music = @game.add.audio 'boss_battle'
+    @music.onDecoded.add @startMusic, this
+
+  startMusic: ->
+    @music.volume = 0.7
+    @music.fadeIn(3000)
+
   killBoss: ->
+
+    @music.stop()
+    
     @filter = @game.add.filter 'Fire', @game.width, @game.height, 0.5
     @filter.alpha = 0.5;
     @sprite_bg.filters = [@filter];
@@ -16,6 +26,8 @@ class FightScene
     
     boss_death = @game.add.audio 'boss_death'
     boss_death.play()
+
+    special_sprite = @game.add.sprite 10, 10, 'special', 1
     
     tween = @game.add.tween(@dragon).to( { alpha: 0 }, 6000, "Power0").start()
     tween.onComplete.add () =>

@@ -40,6 +40,8 @@ class Game extends Phaser.State
   
     @game.load.text('creditstext', 'assets/credits/text/credits.txt');
 
+    @game.load.spritesheet 'special', 'assets/sprites/Special2.png', 192, 192
+
     @game.load.spritesheet 'player', 'assets/sprites/characters.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
 
@@ -48,6 +50,7 @@ class Game extends Phaser.State
     #@game.load.audio('credits_music', 'assets/audio/BoxCatGames-Rolling.mp3');
     @game.load.audio('credits_music', 'assets/audio/halaware.mp3');
     @game.load.audio('boss_death', 'assets/audio/Randomize25.wav');
+    @game.load.audio('boss_battle', 'assets/audio/Battle7.ogg');
 
     @game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
