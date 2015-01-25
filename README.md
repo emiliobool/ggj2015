@@ -3,9 +3,7 @@
 TODO: Write a project description
 
 ## Play It
-- [WIP](http://ggj2015.emiliobool.com/)
-- [WIP Commits](http://ggj2015.emiliobool.com/commits)
-- [Final Game](http://horchatas.github.io/ggj2015/)
+- [Play](http://horchatas.github.io/ggj2015/)
 
 ## Contributors
 - Lopez Audeves Ivonne Fernanda 
