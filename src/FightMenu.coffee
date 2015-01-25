@@ -79,7 +79,7 @@ class FightMenu
         @actionDisabled()
     else
       @cusorMoved()
-  
+
 
   keyRight: ->
     if @mode == "main"
@@ -115,11 +115,11 @@ class FightMenu
     @addText 190, 265, "Sasuke"
     @addText 190, 310, "Sakura"
     @addText 320, 220, "HP 189/1450"
-    @addText 320, 265, "HP 189/2390"
-    @addText 320, 310, "HP 189/1100"
+    @addText 320, 265, "HP 0/2390"
+    @addText 320, 310, "HP 0/1100"
     @addText 480, 220, "MP 2/78 "
-    @addText 480, 265, "MP 189/33"
-    @addText 480, 310, "MP 189/182"
+    @addText 480, 265, "MP 19/33"
+    @addText 480, 310, "MP 89/182"
 
   createMagicText: ->
     @clearText()
