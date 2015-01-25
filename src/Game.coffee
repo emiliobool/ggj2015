@@ -4,19 +4,19 @@ class Game extends Phaser.State
 
   constructor: ->
     game = new Phaser.Game 640, 360, Phaser.AUTO, 'game', this
-
     @assets_loaded = false
     @gfonts_loaded = false
-
+  
   loadStart: ->
     @loadingText = @game.add.text @game.world.centerX, @game.world.centerY, 'Loading...', { fill: '#ffffff', align: 'center' }
     @loadingText.anchor.set 0.5
-    console.log 'loading'
 
   loadComplete: ->
     @loadingText.setText("Load Complete");
     @assets_loaded = true
-    @create()
+    
+    if(@game.state.current == "default")
+      @create()
 
   preload: ->
     @game.load.onLoadStart.add @loadStart, this
@@ -26,17 +26,16 @@ class Game extends Phaser.State
     @game.load.image 'tiles', 'assets/tilemaps/tiles/catastrophi_tiles_16.png'
     @game.load.image 'fightbg', 'assets/bg/bg.png'
     @game.load.image 'fightboss', 'assets/sprites/dragon.png'
-    @game.load.image 'fightmenu', 'assets/bg/menu3.png'
+    @game.load.image 'fightmenu', 'assets/bg/menu2.png'
     @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
-    @game.load.start()
+    #@game.load.start()
 
     @game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL
 
-    @game.state.add 'preloadState', {}
     @game.state.add 'fightState', new FightState
-    @game.state.add 'creditsState', new CreditsState
+    @game.state.add 'creditsState', new CreditsState 
     @game.state.add 'mapState', new MapState
 
     WebFont.load(
@@ -45,16 +44,17 @@ class Game extends Phaser.State
         @gfonts_loaded = true
         @create()
         #@game.state.start 'fightState'
-      google:
+      google: 
         families: ['VT323::latin']
     )
-
+  
   create: ->
     if @assets_loaded && @gfonts_loaded
       @game.state.start 'fightState'
-
+      
+    
     #@game.add.button @game.world.Width - 100, 0, 'button', @fullscreen, this, 2, 1, 0
-
+   
   update: ->
 
   render: ->
@@ -65,6 +65,6 @@ class Game extends Phaser.State
       @game.scale.stopFullScreen()
     else
       @game.scale.startFullScreen false
-
+    
 window.onload = ()->
   new Game
