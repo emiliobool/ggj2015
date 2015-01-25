@@ -2,6 +2,8 @@
 class FightMenu
 	constructor: (@game) ->
 
+    @onProceed = () ->
+
     @style =
       font: '23px VT323'
       fill: '#FFFFFF'
@@ -35,6 +37,11 @@ class FightMenu
 
     @setMainMode()
 
+  fadeOut: (callback) ->
+    @game.add.tween(@sprite_bg).to( { alpha: 0 }, 6000, "Power0").start();
+    @game.add.tween(@cursor_text).to( { alpha: 0 }, 6000, "Power0").start();
+    for text in @texts
+      @game.add.tween(text).to( { alpha: 0 }, 6000, "Power0").start();
 
   #
   # Text Functions
@@ -45,6 +52,7 @@ class FightMenu
     @texts.push textSprite
   clearText: ->
     @removeText text for text in @texts
+    @texts = []
   removeText: (text) ->
     text.destroy()
   #
@@ -93,10 +101,11 @@ class FightMenu
       @cusorMoved()
 
   keyA: ->
+
     switch @mode
       when "main"
         switch @cursor[1]
-          when 0 then @game.state.start 'mapState'
+          when 0 then @action()
           when 1 then @setMagicMode()
           when 2 then @setItemsMode()
       when "magic"
@@ -166,7 +175,9 @@ class FightMenu
     @cursor = [0, 0]
     @updateCursor()
 
-
+  action: ->
+    #remove listeners
+    @onProceed()
   #
   # Update Cursor
   #
@@ -190,4 +201,4 @@ class FightMenu
 
   update: ->
 
-      #@game.state.start 'mapState'
+      #

@@ -32,6 +32,8 @@ class Game extends Phaser.State
 
     @game.load.audio('menu_cursor', 'assets/audio/Blip_Select35.wav');
     @game.load.audio('menu_disabled', 'assets/audio/menu_disabled.wav');
+
+    @game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
     #@game.load.start()
 
