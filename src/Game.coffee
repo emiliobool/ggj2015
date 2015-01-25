@@ -3,7 +3,8 @@
 class Game extends Phaser.State
 
   constructor: ->
-    new Phaser.Game 640, 360, Phaser.AUTO, 'game', this
+    @game = new Phaser.Game 640, 360, Phaser.AUTO, 'game', this
+    @game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL
 
   preload: ->
     @game.load.tilemap 'map', 'assets/tilemaps/csv/catastrophi_level2.csv', null, Phaser.Tilemap.CSV
@@ -13,12 +14,20 @@ class Game extends Phaser.State
     @game.load.image 'fightmenu', 'assets/bg/menu2.png'
     @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
-        
+    #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
+    WebFont.load({
+      active: ()=>
+        #console.log 'loaded', @game
+        @game.state.start 'fightState'
+      google: {
+        families: ['VT323::latin']
+      }
+    })
   
   create: ->
-    @game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL
+    
 
-    @game.state.add 'fightState', new FightState, true
+    @game.state.add 'fightState', new FightState
     @game.state.add 'creditsState', new CreditsState 
     @game.state.add 'mapState', new MapState
        
