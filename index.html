@@ -6,6 +6,8 @@
         <style>
             body{
                 background: #000;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#FFF;
             }
             #game{
                 text-align: center;
@@ -16,6 +18,17 @@
             }
             #game canvas{
                 display:inline-block !important;
+            }
+            .intro{
+                padding:10px;
+                font-size:18px;
+                text-align: center;
+                width:640px;
+                margin:0 auto;
+
+            }
+            .intro strong{
+                font-size:22px;
             }
             a{
                 color:#FFF;
@@ -33,7 +46,15 @@
     
         <div id="game" align="center"></div>
         <div id="fullscreen">
-            <a href="javascript: window.fullscreen();"> Fullscreen </a>
+            &gt; <a href="javascript: window.fullscreen();"> Fullscreen </a> &lt;
+        </div>
+
+        <div class="intro">
+            <p>
+            You've walked mountains, forests, and deserts. You've traveled by sea and air. You've met people, both friends and enemies. 
+You're now stronger than ever, and you've reached the end of your adventure... </p>
+        <p>
+        <strong>What do YOU do now?</strong> </p>
         </div>
 
     </body>

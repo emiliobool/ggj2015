@@ -38,10 +38,10 @@ class FightMenu
     @setMainMode()
 
   fadeOut: (callback) ->
-    @game.add.tween(@sprite_bg).to( { alpha: 0 }, 6000, "Power0").start();
-    @game.add.tween(@cursor_text).to( { alpha: 0 }, 6000, "Power0").start();
+    @game.add.tween(@sprite_bg).to( { alpha: 0 }, 6000, "Power0").start()
+    @game.add.tween(@cursor_text).to( { alpha: 0 }, 6000, "Power0").start()
     for text in @texts
-      @game.add.tween(text).to( { alpha: 0 }, 6000, "Power0").start();
+      @game.add.tween(text).to( { alpha: 0 }, 6000, "Power0").start()
 
   #
   # Text Functions

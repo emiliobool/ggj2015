@@ -24,19 +24,29 @@ class Game extends Phaser.State
     #@game.load.onFileComplete.add @fileComplete, this
     @game.load.onLoadComplete.add @loadComplete, this
     @game.load.tilemap 'map', 'assets/tilemaps/csv/catastrophi_level2.csv', null, Phaser.Tilemap.CSV
+   
     @game.load.image 'tiles', 'assets/tilemaps/tiles/catastrophi_tiles_16.png'
     @game.load.image 'fightbg', 'assets/bg/bg.png'
     @game.load.image 'fightboss', 'assets/sprites/dragon.png'
 
     @game.load.image 'fightmenu', 'assets/bg/menu3.png'
-    @game.load.image 'mypoorgrandma', 'assets/credits/images/mypoorgrandma.png'
+    @game.load.image 'credits0', 'assets/credits/images/0.png'
+    @game.load.image 'credits1', 'assets/credits/images/1.png'
+    @game.load.image 'credits2', 'assets/credits/images/2.png'
+    @game.load.image 'credits3', 'assets/credits/images/3.png'
+    @game.load.image 'credits4', 'assets/credits/images/4.png'
+    @game.load.image 'credits5', 'assets/credits/images/5.png'
+    @game.load.image 'credits7', 'assets/credits/images/7.png'
+  
     @game.load.text('creditstext', 'assets/credits/text/credits.txt');
 
-    @game.load.spritesheet 'player', 'assets/sprites/Robin.png', 32, 32
+    @game.load.spritesheet 'player', 'assets/sprites/characters.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
 
     @game.load.audio('menu_cursor', 'assets/audio/Blip_Select35.wav');
     @game.load.audio('menu_disabled', 'assets/audio/menu_disabled.wav');
+    #@game.load.audio('credits_music', 'assets/audio/BoxCatGames-Rolling.mp3');
+    @game.load.audio('credits_music', 'assets/audio/halaware.mp3');
 
     @game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
@@ -64,7 +74,8 @@ class Game extends Phaser.State
 
     if @assets_loaded && @gfonts_loaded && @game.state.current == "default"
 
-      @game.state.start 'fightState'
+      #@game.state.start 'fightState'
+      @game.state.start 'creditsState'
 
 
 
