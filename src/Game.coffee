@@ -47,6 +47,7 @@ class Game extends Phaser.State
     @game.load.audio('menu_disabled', 'assets/audio/menu_disabled.wav');
     #@game.load.audio('credits_music', 'assets/audio/BoxCatGames-Rolling.mp3');
     @game.load.audio('credits_music', 'assets/audio/halaware.mp3');
+    @game.load.audio('boss_death', 'assets/audio/Randomize25.wav');
 
     @game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'

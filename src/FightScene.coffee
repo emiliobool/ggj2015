@@ -12,6 +12,10 @@ class FightScene
     @filter = @game.add.filter 'Fire', @game.width, @game.height, 0.5
     @filter.alpha = 0.5;
     @sprite_bg.filters = [@filter];
+
+    
+    boss_death = @game.add.audio 'boss_death'
+    boss_death.play()
     
     tween = @game.add.tween(@dragon).to( { alpha: 0 }, 6000, "Power0").start()
     tween.onComplete.add () =>
