@@ -23,9 +23,9 @@ class Game extends Phaser.State
     @game.stage.disableVisibilityChange = true
     #@game.load.onFileComplete.add @fileComplete, this
     @game.load.onLoadComplete.add @loadComplete, this
-    @game.load.tilemap 'map', 'assets/tilemaps/csv/catastrophi_level2.csv', null, Phaser.Tilemap.CSV
+    @game.load.tilemap 'map', 'assets/tilemaps/csv/map.csv', null, Phaser.Tilemap.CSV
    
-    @game.load.image 'tiles', 'assets/tilemaps/tiles/catastrophi_tiles_16.png'
+    @game.load.image 'tiles', 'assets/tilemaps/tiles/Outside_A2.png'
     @game.load.image 'fightbg', 'assets/bg/bg.png'
     @game.load.image 'fightboss', 'assets/sprites/dragon.png'
 
@@ -75,7 +75,7 @@ class Game extends Phaser.State
     if @assets_loaded && @gfonts_loaded && @game.state.current == "default"
 
       #@game.state.start 'fightState'
-      @game.state.start 'creditsState'
+      @game.state.start 'mapState'
 
 
 
