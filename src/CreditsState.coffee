@@ -13,47 +13,60 @@ class CreditsState extends Phaser.State
     @creditsSprite.y = @game.height
     @creditsSprite.x = 20
 
+    @images_group = @game.add.group()
+    
+    @game.world.bringToTop(@creditsSprite)
+
     @music = @game.add.audio 'credits_music'
     @music.onDecoded.add @startMusic, this
 
-    @runAtProgress 0.0, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits0'
+    @runAtProgress -0.1, () =>
+      credits_image = @images_group.create 243, 30, 'credits0'
       credits_image.alpha = 0
-      @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
+      #credits_image.tint = 0xffffff;
+      #PIXI. SepiaFilter
+      @game.add.tween(credits_image).to( { alpha:1 }, 10, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
       
-    @runAtProgress 0.125, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits1'
+    @runAtProgress 0.014285714285714277, () =>
+      credits_image = @images_group.create 243, 30, 'credits1'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.25, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits2'
+    @runAtProgress 0.12857142857142856, () =>
+      credits_image = @images_group.create 243, 30, 'credits2'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.375, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits3'
+    @runAtProgress 0.24285714285714285, () =>
+      credits_image = @images_group.create 243, 30, 'credits3'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.5, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits4'
+    @runAtProgress 0.3571428571428571, () =>
+      credits_image = @images_group.create 243, 30, 'credits4'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.625, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits5'
+    @runAtProgress 0.4714285714285714, () =>
+      credits_image = @images_group.create 243, 30, 'credits5'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.75, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits0'
+    @runAtProgress 0.5857142857142857, () =>
+      credits_image = @images_group.create 243, 30, 'credits0'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 0.875, () =>
-      credits_image = @game.add.sprite 320, 30, 'credits7'
+    @runAtProgress 0.7, () =>
+      credits_image = @images_group.create 243, 30, 'credits7'
       credits_image.alpha = 0
+      
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
     @runAtProgress 1, () =>
