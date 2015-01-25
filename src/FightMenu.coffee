@@ -8,12 +8,12 @@ class FightMenu
       #stroke: '#000000'
       #strokeThickness: 2
       shadow: 4
-    
+
     @texts = []
 
     @keys = @game.input.keyboard.createCursorKeys()
     @keys.A = @game.input.keyboard.addKey Phaser.Keyboard.A
-    
+
     @keys.up.onDown.add @keyUp, this
     @keys.down.onDown.add @keyDown, this
     @keys.left.onDown.add @keyLeft, this
@@ -21,11 +21,12 @@ class FightMenu
     @keys.A.onDown.add @keyA, this
 
     @cursor = [0, 0]
+
     @audio_menu_cursor = game.add.audio('menu_cursor')
     @audio_menu_disabled = game.add.audio('menu_disabled')
 
     @sprite_bg = @game.add.sprite 0, 192, 'fightmenu'
-   
+
     @cursor_text = @game.add.text 0, 0, '>', @style
     @cursor_text.setShadow 2, 2, 'rgba(0,0,0,0.9)', 0
 
@@ -34,7 +35,7 @@ class FightMenu
 
   #
   # Text Functions
-  # 
+  #
   addText: (x, y, text) ->
     textSprite = @game.add.text x, y, text, @style
     textSprite.setShadow 2, 2, 'rgba(0,0,0,0.9)', 0
@@ -76,6 +77,7 @@ class FightMenu
     else
       @cusorMoved()
   
+
   keyRight: ->
     if @mode == "main"
       @actionDisabled()
@@ -102,28 +104,34 @@ class FightMenu
   # Create Text
   #
   createMainText: ->
-    
-    @addText 40, 220, "Attack"
-    @addText 40, 260, "Magic"
-    @addText 40, 300, "Items"
-    @addText 270, 220, "Hero"
-    @addText 270, 260, "Hero 2"
-    @addText 270, 300, "Hero 3"
-    @addText 390, 220, "189/1300 HP   2/78 MP"
-    @addText 390, 260, "189/1300 HP   2/78 MP"
-    @addText 390, 300, "189/1300 HP   2/78 MP"
+
+    @addText 45, 220, "Attack"
+    @addText 45, 265, "Magic"
+    @addText 45, 310, "Items"
+    @addText 190, 220, "Naruto"
+    @addText 190, 265, "Sasuke"
+    @addText 190, 310, "Sakura"
+    @addText 320, 220, "HP 189/1450"
+    @addText 320, 265, "HP 189/2390"
+    @addText 320, 310, "HP 189/1100"
+    @addText 480, 220, "MP 2/78 "
+    @addText 480, 265, "MP 189/33"
+    @addText 480, 310, "MP 189/182"
 
   createMagicText: ->
     @clearText()
-    @addText 40, 220, "Attack"
-    @addText 40, 260, "Magic"
-    @addText 40, 300, "Items"
+    @addText 190, 220, "Omega Blast"
+    @addText 190, 265, "Thunder Strike"
+    @addText 190, 310, "Band-aid"
+    @addText 380, 220, "Omega Blast"
+    @addText 380, 265, "Thunder Strike"
+    @addText 380, 310, "Band-aid"
 
   createItemsText: ->
     @clearText()
-    @addText 40, 220, "Attack"
-    @addText 40, 260, "Magic"
-    @addText 40, 300, "Items"
+    @addText 190, 220, "Potion"
+    @addText 190, 265, "Ether"
+    @addText 190, 310, "Elixir"
 
   #
   # Set Menu Mode
@@ -161,17 +169,16 @@ class FightMenu
 
   updateCursor: ->
     switch @mode
-      when "main" 
+      when "main"
         @cursor_text.x = 20
-        @cursor_text.y = 220 + @cursor[1] * 40
+        @cursor_text.y = 220 + @cursor[1] * 45
       when "magic"
-        @cursor_text.x = 260 + @cursor[0] * 60
-        @cursor_text.y = 220 + @cursor[1] * 40
+        @cursor_text.x = 170 + @cursor[0] * 190
+        @cursor_text.y = 220 + @cursor[1] * 45
       when "items"
-        @cursor_text.x = 260 + @cursor[0] * 60
-        @cursor_text.y = 220 + @cursor[1] * 40
+        @cursor_text.x = 170 + @cursor[0] * 190
+        @cursor_text.y = 220 + @cursor[1] * 45
 
   update: ->
-      
+
       #@game.state.start 'mapState'
-      
