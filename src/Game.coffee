@@ -75,7 +75,7 @@ class Game extends Phaser.State
     if @assets_loaded && @gfonts_loaded && @game.state.current == "default"
 
       #@game.state.start 'fightState'
-      @game.state.start 'mapState'
+      @game.state.start 'fightState'
 
 
 
