@@ -15,7 +15,8 @@ class FightScene
     
     tween = @game.add.tween(@dragon).to( { alpha: 0 }, 6000, "Power0").start()
     tween.onComplete.add () =>
-      @sprite_bg.filters = []
+      #@sprite_bg.filters = []
+      @sprite_bg.destroy()
       @onBossKilled()
 
   fadeOut: (callback) ->
@@ -26,7 +27,6 @@ class FightScene
 
   update: ->
     if @filter
-      @filter.alpha -= 0.01
       @filter.update()
 
     

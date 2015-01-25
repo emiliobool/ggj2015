@@ -13,7 +13,7 @@ class Game extends Phaser.State
     @loadingText.setText("Load Complete");
     @assets_loaded = true
 
-    if(@game.state.current == "default")
+    if @game.state.current == "default"
       @create()
 
   preload: ->
@@ -26,6 +26,8 @@ class Game extends Phaser.State
     @game.load.image 'fightboss', 'assets/sprites/dragon.png'
 
     @game.load.image 'fightmenu', 'assets/bg/menu3.png'
+    @game.load.image 'mypoorgrandma', 'assets/credits/images/mypoorgrandma.png'
+    @game.load.text('creditstext', 'assets/credits/text/credits.txt');
 
     @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
@@ -53,9 +55,14 @@ class Game extends Phaser.State
         families: ['VT323::latin']
     )
 
+    
+
   create: ->
-    if @assets_loaded && @gfonts_loaded
+
+    if @assets_loaded && @gfonts_loaded && @game.state.current == "default"
+
       @game.state.start 'fightState'
+
 
 
     #@game.add.button @game.world.Width - 100, 0, 'button', @fullscreen, this, 2, 1, 0
@@ -66,6 +73,7 @@ class Game extends Phaser.State
 
 
   fullscreen: ->
+    console.log 'f'
     if @game.scale.isFullScreen
       @game.scale.stopFullScreen()
     else

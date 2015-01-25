@@ -11,8 +11,8 @@ class FightState extends Phaser.State
   fadeOut: ->
     @fightMenu.fadeOut()
     @fightScene.fadeOut () =>
-      @game.time.events.add Phaser.Timer.SECOND * 10, () =>
-        @game.state.start 'mapState'
+      @game.time.events.add Phaser.Timer.SECOND * 3, () =>
+        @game.state.start 'creditsState'
       
 
   update: ->
