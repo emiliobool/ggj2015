@@ -3,7 +3,7 @@ class FightMenu
 	constructor: (@game) ->
 
     @style =
-      font: '28px VT323'
+      font: '23px VT323'
       fill: '#FFFFFF'
       #stroke: '#000000'
       #strokeThickness: 2
@@ -20,11 +20,13 @@ class FightMenu
     @keys.right.onDown.add @keyRight, this
     @keys.A.onDown.add @keyA, this
 
-  createText: ->
+    @cursor = [0, 0]
+    
 
-
-    attack_old = @game.add.text 40, 220, "Attack", @style
-    attack_old.setShadow 2, 2, 'rgba(0,0,0,0.9)', 0
+    @sprite_bg = @game.add.sprite 0, 192, 'fightmenu'
+   
+    @cursor_text = @game.add.text 0, 0, '>', @style
+    @cursor_text.setShadow 2, 2, 'rgba(0,0,0,0.9)', 0
 
     @setMainMode()
 
@@ -150,7 +152,6 @@ class FightMenu
         @cursor_text.y = 220 + @cursor[1] * 40
 
   update: ->
-
-    if @cursors.down.isDown
-      null
+      
       #@game.state.start 'mapState'
+      
