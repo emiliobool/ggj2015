@@ -20,6 +20,7 @@ class Game extends Phaser.State
 
   preload: ->
     @game.load.onLoadStart.add @loadStart, this
+    @game.stage.disableVisibilityChange = true
     #@game.load.onFileComplete.add @fileComplete, this
     @game.load.onLoadComplete.add @loadComplete, this
     @game.load.tilemap 'map', 'assets/tilemaps/csv/catastrophi_level2.csv', null, Phaser.Tilemap.CSV
@@ -31,7 +32,7 @@ class Game extends Phaser.State
     @game.load.image 'mypoorgrandma', 'assets/credits/images/mypoorgrandma.png'
     @game.load.text('creditstext', 'assets/credits/text/credits.txt');
 
-    @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
+    @game.load.spritesheet 'player', 'assets/sprites/Robin.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
 
     @game.load.audio('menu_cursor', 'assets/audio/Blip_Select35.wav');
