@@ -15,6 +15,11 @@ class Game extends Phaser.State
     @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
+
+    @game.state.add 'fightState', new FightState
+    @game.state.add 'creditsState', new CreditsState 
+    @game.state.add 'mapState', new MapState
+
     WebFont.load({
       active: ()=>
         #console.log 'loaded', @game
@@ -26,12 +31,9 @@ class Game extends Phaser.State
   
   create: ->
     
-
-    @game.state.add 'fightState', new FightState
-    @game.state.add 'creditsState', new CreditsState 
-    @game.state.add 'mapState', new MapState
-       
-    @game.add.button @game.world.Width - 100, 0, 'button', @fullscreen, this, 2, 1, 0
+    text = @game.add.text @game.world.centerX, @game.world.centerY, 'Loading...', { fill: '#ffffff', align: 'center' }
+    text.anchor.set 0.5
+    #@game.add.button @game.world.Width - 100, 0, 'button', @fullscreen, this, 2, 1, 0
    
   update: ->
 
