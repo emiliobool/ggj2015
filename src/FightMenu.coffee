@@ -21,7 +21,8 @@ class FightMenu
     @keys.A.onDown.add @keyA, this
 
     @cursor = [0, 0]
-    
+    @audio_menu_cursor = game.add.audio('menu_cursor')
+    @audio_menu_disabled = game.add.audio('menu_disabled')
 
     @sprite_bg = @game.add.sprite 0, 192, 'fightmenu'
    
@@ -49,27 +50,42 @@ class FightMenu
     @cursor[1]--;
     if @cursor[1] < 0
       @cursor[1] = 0
-    @updateCursor()
+      @actionDisabled()
+    else
+      @cusorMoved()
 
   keyDown: ->
     @cursor[1]++;
     if @cursor[1] > 2
       @cursor[1] = 2
-    @updateCursor()
+      @actionDisabled()
+    else
+      @cusorMoved()
 
   keyLeft: ->
+    if @mode == "main"
+      @actionDisabled()
+      return
     @cursor[0]--;
     if @cursor[0] < 0
       @cursor[0] = 0
       if @mode != "main"
         @setMainMode()
-    @updateCursor()
+      else
+        @actionDisabled()
+    else
+      @cusorMoved()
   
   keyRight: ->
+    if @mode == "main"
+      @actionDisabled()
+      return
     @cursor[0]++;
     if @cursor[0] > 2
       @cursor[0] = 2
-    @updateCursor()
+      @actionDisabled()
+    else
+      @cusorMoved()
 
   keyA: ->
     switch @mode
@@ -78,12 +94,10 @@ class FightMenu
           when 0 then @game.state.start 'mapState'
           when 1 then @setMagicMode()
           when 2 then @setItemsMode()
-
-
-  processMagicKeys: ->
-
-  processItemsKeys: ->
-
+      when "magic"
+        @actionDisabled()
+      when "items"
+        @actionDisabled()
   #
   # Create Text
   #
@@ -139,6 +153,12 @@ class FightMenu
   #
   # Update Cursor
   #
+  actionDisabled: ->
+    @audio_menu_disabled.play()
+  cusorMoved: ->
+    @audio_menu_cursor.play()
+    @updateCursor()
+
   updateCursor: ->
     switch @mode
       when "main" 
