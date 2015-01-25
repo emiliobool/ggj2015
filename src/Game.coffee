@@ -30,7 +30,7 @@ class Game extends Phaser.State
     @game.load.spritesheet 'player', 'assets/sprites/artemis.png', 32, 32
     @game.load.spritesheet 'button', 'assets/buttons/button_sprite_sheet.png', 193, 71
 
-    @game.load.audio('menu_cursor', 'assets/audio/menu_cursor.wav');
+    @game.load.audio('menu_cursor', 'assets/audio/Blip_Select35.wav');
     @game.load.audio('menu_disabled', 'assets/audio/menu_disabled.wav');
     #@game.load.script 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js'
     #@game.load.start()

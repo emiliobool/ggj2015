@@ -25,6 +25,9 @@ class FightMenu
     @audio_menu_cursor = game.add.audio('menu_cursor')
     @audio_menu_disabled = game.add.audio('menu_disabled')
 
+    @audio_menu_cursor.volume = 0.5
+    @audio_menu_disabled.volume = 0.5
+
     @sprite_bg = @game.add.sprite 0, 192, 'fightmenu'
 
     @cursor_text = @game.add.text 0, 0, '>', @style
@@ -120,6 +123,9 @@ class FightMenu
 
   createMagicText: ->
     @clearText()
+    @addText 45, 220, "Attack"
+    @addText 45, 265, "Magic"
+    @addText 45, 310, "Items"
     @addText 190, 220, "Omega Blast"
     @addText 190, 265, "Thunder Strike"
     @addText 190, 310, "Band-aid"
@@ -129,6 +135,9 @@ class FightMenu
 
   createItemsText: ->
     @clearText()
+    @addText 45, 220, "Attack"
+    @addText 45, 265, "Magic"
+    @addText 45, 310, "Items"
     @addText 190, 220, "Potion"
     @addText 190, 265, "Ether"
     @addText 190, 310, "Elixir"
