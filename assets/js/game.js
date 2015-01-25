@@ -19,7 +19,7 @@
 
   FightMenu = (function() {
     function FightMenu(game) {
-      var style, text;
+      var attack, h1hpmp, h2hpmp, h3hpmp, hero1, hero2, hero3, items, magic, style;
       this.game = game;
       this.cursors = this.game.input.keyboard.createCursorKeys();
       this.sprite_bg = this.game.add.sprite(0, 192, 'fightmenu');
@@ -28,8 +28,24 @@
         fill: '#FFFFFF',
         shadow: 4
       };
-      text = this.game.add.text(40, 210, "Attack\nMagic\nItems\nEscape", style);
-      text.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      attack = this.game.add.text(40, 220, "Attack", style);
+      attack.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      magic = this.game.add.text(40, 260, "Magic", style);
+      magic.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      items = this.game.add.text(40, 300, "Items", style);
+      items.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      hero1 = this.game.add.text(270, 220, "Hero", style);
+      hero1.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      hero2 = this.game.add.text(270, 260, "Hero 2", style);
+      hero2.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      hero3 = this.game.add.text(270, 300, "Hero 3", style);
+      hero3.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      h1hpmp = this.game.add.text(390, 220, "189/1300 HP   2/78 MP", style);
+      h1hpmp.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      h2hpmp = this.game.add.text(390, 260, "189/1300 HP   2/78 MP", style);
+      h2hpmp.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
+      h3hpmp = this.game.add.text(390, 300, "189/1300 HP   2/78 MP", style);
+      h3hpmp.setShadow(2, 2, 'rgba(0,0,0,0.9)', 0);
     }
 
     FightMenu.prototype.update = function() {
