@@ -9,35 +9,154 @@
 
     function CreditsState() {
       this.progress = 0;
+      this.progress_events = [];
     }
 
+    CreditsState.prototype.startMusic = function() {
+      this.music.volume = 0.7;
+      return this.music.fadeIn(3000);
+    };
+
     CreditsState.prototype.create = function() {
-      var credits, tween;
-      credits = this.game.cache.getText('creditstext');
-      this.style = {
+      var creditsText;
+      creditsText = this.game.cache.getText('creditstext');
+      this.creditsSprite = this.game.add.text(0, 0, creditsText, {
         font: '16px VT323',
         fill: '#FFFFFF'
-      };
-      this.creditsSprite = this.game.add.text(0, 0, credits, this.style);
+      });
       this.creditsSprite.y = this.game.height;
-      this.pic1 = this.game.add.sprite(320, 30, 'mypoorgrandma');
-      this.pic1.scale.x = 0.5;
-      this.pic1.scale.y = 0.5;
-      this.pic1.alpha = 0;
-      return tween = this.game.add.tween(this.pic1).to({
-        alpha: 1
-      }, 3000, "Power0", false, 3000).to({
-        alpha: 0
-      }, 3000, "Power0", false, 2500).repeatAll(1).loop().start();
+      this.creditsSprite.x = 20;
+      this.images_group = this.game.add.group();
+      this.game.world.bringToTop(this.creditsSprite);
+      this.music = this.game.add.audio('credits_music');
+      this.music.onDecoded.add(this.startMusic, this);
+      this.runAtProgress(-0.1, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits0');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 10, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.014285714285714277, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits1');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.12857142857142856, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits2');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.24285714285714285, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits3');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.3571428571428571, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits4');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.4714285714285714, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits5');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.5857142857142857, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits6');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      this.runAtProgress(0.7, (function(_this) {
+        return function() {
+          var credits_image;
+          credits_image = _this.images_group.create(243, 30, 'credits7');
+          credits_image.alpha = 0;
+          return _this.game.add.tween(credits_image).to({
+            alpha: 1
+          }, 3000, "Power0", false, 0).to({
+            alpha: 0
+          }, 3000, "Power0", false, 4000).start();
+        };
+      })(this));
+      return this.runAtProgress(1, (function(_this) {
+        return function() {
+          return _this.game.state.start('mapState');
+        };
+      })(this));
+    };
+
+    CreditsState.prototype.runAtProgress = function(progress, callback) {
+      return this.progress_events.push([progress, true, callback]);
+    };
+
+    CreditsState.prototype.fireProgressEvents = function() {
+      var event, _i, _len, _ref, _results;
+      _ref = this.progress_events;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        event = _ref[_i];
+        if (event[1] && event[0] <= this.progress) {
+          event[1] = false;
+          _results.push(event[2]());
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     };
 
     CreditsState.prototype.update = function() {
       this.creditsSprite.y--;
       this.progress = 1 - (this.creditsSprite.height + this.creditsSprite.y) / this.creditsSprite.height;
-      if (this.progress > 1) {
-        this.game.state.start('mapState');
-      }
-      return console.log(this.progress);
+      return this.fireProgressEvents();
     };
 
     return CreditsState;
@@ -246,6 +365,9 @@
     };
 
     FightMenu.prototype.action = function() {
+      this.cursor_text.alpha = 0;
+      this.game.input.keyboard.reset(true);
+      this.audio_menu_cursor.play();
       return this.onProceed();
     };
 
@@ -285,15 +407,28 @@
       this.sprite_bg = this.group.create(0, 0, 'fightbg');
       this.dragon = this.group.create(80, 0, 'fightboss');
       this.hero = this.group.create(400, 70, 'player');
+      this.hero.frame = 15;
       this.hero2 = this.group.create(430, 110, 'player');
+      this.hero2.frame = 13;
       this.hero3 = this.group.create(460, 150, 'player');
+      this.hero3.frame = 18;
+      this.music = this.game.add.audio('boss_battle');
+      this.music.onDecoded.add(this.startMusic, this);
     }
 
+    FightScene.prototype.startMusic = function() {
+      this.music.volume = 0.7;
+      return this.music.play('', 0, 1, true);
+    };
+
     FightScene.prototype.killBoss = function() {
-      var tween;
+      var boss_death, tween;
+      this.music.stop();
       this.filter = this.game.add.filter('Fire', this.game.width, this.game.height, 0.5);
       this.filter.alpha = 0.5;
       this.sprite_bg.filters = [this.filter];
+      boss_death = this.game.add.audio('boss_death');
+      boss_death.play();
       tween = this.game.add.tween(this.dragon).to({
         alpha: 0
       }, 6000, "Power0").start();
@@ -380,6 +515,11 @@
       game = new Phaser.Game(640, 360, Phaser.AUTO, 'game', this);
       this.assets_loaded = false;
       this.gfonts_loaded = false;
+      window.fullscreen = (function(_this) {
+        return function() {
+          return _this.fullscreen();
+        };
+      })(this);
     }
 
     Game.prototype.loadStart = function() {
@@ -400,18 +540,30 @@
 
     Game.prototype.preload = function() {
       this.game.load.onLoadStart.add(this.loadStart, this);
+      this.game.stage.disableVisibilityChange = true;
       this.game.load.onLoadComplete.add(this.loadComplete, this);
-      this.game.load.tilemap('map', 'assets/tilemaps/csv/catastrophi_level2.csv', null, Phaser.Tilemap.CSV);
-      this.game.load.image('tiles', 'assets/tilemaps/tiles/catastrophi_tiles_16.png');
+      this.game.load.tilemap('map', 'assets/tilemaps/csv/map.csv', null, Phaser.Tilemap.CSV);
+      this.game.load.image('tiles', 'assets/tilemaps/tiles/Outside_A2.png');
       this.game.load.image('fightbg', 'assets/bg/bg.png');
       this.game.load.image('fightboss', 'assets/sprites/dragon.png');
       this.game.load.image('fightmenu', 'assets/bg/menu3.png');
-      this.game.load.image('mypoorgrandma', 'assets/credits/images/mypoorgrandma.png');
+      this.game.load.image('credits0', 'assets/credits/images/0.png');
+      this.game.load.image('credits1', 'assets/credits/images/1.png');
+      this.game.load.image('credits2', 'assets/credits/images/2.png');
+      this.game.load.image('credits3', 'assets/credits/images/3.png');
+      this.game.load.image('credits4', 'assets/credits/images/4.png');
+      this.game.load.image('credits5', 'assets/credits/images/5.png');
+      this.game.load.image('credits6', 'assets/credits/images/6.png');
+      this.game.load.image('credits7', 'assets/credits/images/7.png');
       this.game.load.text('creditstext', 'assets/credits/text/credits.txt');
-      this.game.load.spritesheet('player', 'assets/sprites/artemis.png', 32, 32);
+      this.game.load.spritesheet('special', 'assets/sprites/Special2.png', 192, 192);
+      this.game.load.spritesheet('player', 'assets/sprites/characters.png', 32, 32);
       this.game.load.spritesheet('button', 'assets/buttons/button_sprite_sheet.png', 193, 71);
       this.game.load.audio('menu_cursor', 'assets/audio/Blip_Select35.wav');
       this.game.load.audio('menu_disabled', 'assets/audio/menu_disabled.wav');
+      this.game.load.audio('credits_music', 'assets/audio/halaware.mp3');
+      this.game.load.audio('boss_death', 'assets/audio/Randomize25.wav');
+      this.game.load.audio('boss_battle', 'assets/audio/Battle7.ogg');
       this.game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
       this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
       this.game.state.add('fightState', new FightState);
@@ -441,7 +593,6 @@
     Game.prototype.render = function() {};
 
     Game.prototype.fullscreen = function() {
-      console.log('f');
       if (this.game.scale.isFullScreen) {
         return this.game.scale.stopFullScreen();
       } else {
@@ -462,7 +613,7 @@
 
     function Hero(game) {
       this.game = game;
-      Hero.__super__.constructor.call(this, this.game, 48, 48, 'player', 1);
+      Hero.__super__.constructor.call(this, this.game, 1920, 1500, 'player', 1);
       this.game.add.existing(this);
       this.game.physics.enable(this, Phaser.Physics.ARCADE);
       this.body.setSize(28, 28, 2, 4);
@@ -513,17 +664,36 @@
     MapState.prototype.create = function() {
       this.map = this.game.add.tilemap('map', 32, 32);
       this.map.addTilesetImage('tiles');
-      this.map.setCollisionBetween(54, 83);
       this.layer = this.map.createLayer(0);
       this.layer.resizeWorld();
       this.layer.debug = true;
       this.player = new Hero(this.game);
-      return this.game.camera.follow(this.player);
+      this.game.camera.follow(this.player);
+      this.map.alpha = 0;
+      this.player.alpha = 0;
+      return this.fadeIn();
     };
 
     MapState.prototype.update = function() {
       this.game.physics.arcade.collide(this.player, this.layer);
       return this.player.update();
+    };
+
+    MapState.prototype.fadedIn = function() {};
+
+    MapState.prototype.fadeIn = function() {
+      var tween;
+      tween = this.game.add.tween(this.map).to({
+        alpha: 1
+      }, 2500, "Power0").start();
+      tween.onComplete.add((function(_this) {
+        return function() {
+          return _this.fadedIn();
+        };
+      })(this));
+      return this.game.add.tween(this.player).to({
+        alpha: 1
+      }, 2500, "Power0").start();
     };
 
     MapState.prototype.shutdown = function() {

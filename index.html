@@ -3,15 +3,62 @@
     <head>
         <meta charset="UTF-8" />
         <title>Horchatas Frescas GGJ2015</title>
-        <!-- <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'> -->
+        <style>
+            body{
+                background: #000;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#FFF;
+            }
+            #game{
+                text-align: center;
+
+            }
+
+            #fullscreen{
+                padding-top:20px;
+                text-align: center;
+            }
+            #game canvas{
+                display:inline-block !important;
+                border: 1px solid #333;
+            }
+            .intro{
+                padding:10px;
+                font-size:18px;
+                text-align: center;
+                width:640px;
+                margin:0 auto;
+
+            }
+            .intro strong{
+                font-size:22px;
+            }
+            a{
+                color:#FFF;
+            }
+
+
+        </style>
         <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
         <script src="assets/js/game.js"></script>
 
+
     </head>
     <body>
+    
+        <div id="game" align="center"></div>
+        <div id="fullscreen">
+            &gt; <a href="javascript: window.fullscreen();"> Fullscreen </a> &lt;
+        </div>
 
-        <div id="game"></div>
+        <div class="intro">
+            <p>
+            You've walked mountains, forests, and deserts. You've traveled by sea and air. You've met people, both friends and enemies. 
+You're now stronger than ever, and you've reached the end of your adventure... </p>
+        <p>
+        <strong>What do YOU do now?</strong> </p>
+        </div>
 
     </body>
 </script>
