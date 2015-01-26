@@ -69,12 +69,20 @@ class CreditsState extends Phaser.State
       
       @game.add.tween(credits_image).to( { alpha:1 }, 3000, "Power0", false, 0).to( { alpha: 0 }, 3000, "Power0", false, 4000).start()
 
-    @runAtProgress 1, () =>
+    @runAtProgress 0.95, () =>
+      theEnd = @game.add.text 0, 0, 'The End', { font: '60px VT323', fill: '#FFFFFF', align: 'center'}
+      theEnd.y = @game.height
+      theEnd.x = @game.width / 2
+      theEnd.alpha = 1
+      theEnd.anchor.set 0.5
+      @game.add.tween(theEnd).to({ y: @game.height / 2}, 4000).to({alpha: 0.5}, 2000).start()
+
+    @runAtProgress 1.05, () =>
       @game.state.start 'mapState'
 
   runAtProgress: (progress, callback) ->
     @progress_events.push [progress, true, callback]
-  
+    
   fireProgressEvents: ->
     for event in @progress_events
       if event[1] && event[0] <= @progress

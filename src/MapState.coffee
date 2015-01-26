@@ -11,10 +11,18 @@ class MapState extends Phaser.State
     @layer.debug = true;
     
     @player = new Hero @game
+    @player.anchor.set 0.5
     @game.camera.follow @player
 
-    @map.alpha = 0
+    @layer.alpha = 0
     @player.alpha = 0
+
+    @theEnd = @game.add.text 0, 0, 'The End', { font: '60px VT323', fill: '#FFFFFF', align: 'center'}
+    @theEnd.y = @game.height /2
+    @theEnd.x = @game.width / 2
+    @theEnd.fixedToCamera = true
+    @theEnd.alpha = 0.5
+    @theEnd.anchor.set 0.5
 
     @fadeIn()
 
@@ -24,7 +32,7 @@ class MapState extends Phaser.State
   fadedIn: ->
 
   fadeIn: ->
-    tween = @game.add.tween(@map).to( { alpha: 1 }, 2500, "Power0").start()
+    tween = @game.add.tween(@layer).to( { alpha: 1 }, 2500, "Power0").start()
     tween.onComplete.add () =>
       @fadedIn()
     @game.add.tween(@player).to( { alpha: 1 }, 2500, "Power0").start()

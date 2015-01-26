@@ -6,6 +6,8 @@ class Game extends Phaser.State
     @gfonts_loaded = false
     window.fullscreen = () =>
       @fullscreen()
+    window.mute = () =>
+      @mute()
 
   loadStart: ->
     @loadingText = @game.add.text @game.world.centerX, @game.world.centerY, 'Loading...', { fill: '#ffffff', align: 'center' }
@@ -90,7 +92,8 @@ class Game extends Phaser.State
 
   render: ->
 
-
+  mute: ->
+    @game.sound.mute = !@game.sound.mute 
   fullscreen: ->
     
     if @game.scale.isFullScreen
