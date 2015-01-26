@@ -179,7 +179,10 @@
       this.keys.down.onDown.add(this.keyDown, this);
       this.keys.left.onDown.add(this.keyLeft, this);
       this.keys.right.onDown.add(this.keyRight, this);
+      this.keys.A = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
       this.keys.A.onDown.add(this.keyA, this);
+      this.keys.Z = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
+      this.keys.Z.onDown.add(this.keyA, this);
       this.cursor = [0, 0];
       this.audio_menu_cursor = game.add.audio('menu_cursor');
       this.audio_menu_disabled = game.add.audio('menu_disabled');
@@ -306,8 +309,8 @@
       this.addText(45, 220, "Attack");
       this.addText(45, 265, "Magic");
       this.addText(45, 310, "Items");
-      this.addText(190, 220, "Naruto");
-      this.addText(190, 265, "Sasuke");
+      this.addText(190, 220, "Rick");
+      this.addText(190, 265, "George");
       this.addText(190, 310, "Sakura");
       this.addText(320, 220, "HP 189/1450");
       this.addText(320, 265, "HP 0/2390");
