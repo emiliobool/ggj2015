@@ -126,7 +126,26 @@
           }, 3000, "Power0", false, 4000).start();
         };
       })(this));
-      return this.runAtProgress(1, (function(_this) {
+      this.runAtProgress(0.95, (function(_this) {
+        return function() {
+          var theEnd;
+          theEnd = _this.game.add.text(0, 0, 'The End', {
+            font: '60px VT323',
+            fill: '#FFFFFF',
+            align: 'center'
+          });
+          theEnd.y = _this.game.height;
+          theEnd.x = _this.game.width / 2;
+          theEnd.alpha = 1;
+          theEnd.anchor.set(0.5);
+          return _this.game.add.tween(theEnd).to({
+            y: _this.game.height / 2
+          }, 4000).to({
+            alpha: 0.5
+          }, 2000).start();
+        };
+      })(this));
+      return this.runAtProgress(1.05, (function(_this) {
         return function() {
           return _this.game.state.start('mapState');
         };
@@ -523,6 +542,11 @@
           return _this.fullscreen();
         };
       })(this);
+      window.mute = (function(_this) {
+        return function() {
+          return _this.mute();
+        };
+      })(this);
     }
 
     Game.prototype.loadStart = function() {
@@ -594,6 +618,10 @@
     Game.prototype.update = function() {};
 
     Game.prototype.render = function() {};
+
+    Game.prototype.mute = function() {
+      return this.game.sound.mute = !this.game.sound.mute;
+    };
 
     Game.prototype.fullscreen = function() {
       if (this.game.scale.isFullScreen) {
@@ -671,9 +699,20 @@
       this.layer.resizeWorld();
       this.layer.debug = true;
       this.player = new Hero(this.game);
+      this.player.anchor.set(0.5);
       this.game.camera.follow(this.player);
-      this.map.alpha = 0;
+      this.layer.alpha = 0;
       this.player.alpha = 0;
+      this.theEnd = this.game.add.text(0, 0, 'The End', {
+        font: '60px VT323',
+        fill: '#FFFFFF',
+        align: 'center'
+      });
+      this.theEnd.y = this.game.height / 2;
+      this.theEnd.x = this.game.width / 2;
+      this.theEnd.fixedToCamera = true;
+      this.theEnd.alpha = 0.5;
+      this.theEnd.anchor.set(0.5);
       return this.fadeIn();
     };
 
@@ -686,7 +725,7 @@
 
     MapState.prototype.fadeIn = function() {
       var tween;
-      tween = this.game.add.tween(this.map).to({
+      tween = this.game.add.tween(this.layer).to({
         alpha: 1
       }, 2500, "Power0").start();
       tween.onComplete.add((function(_this) {
