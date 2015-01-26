@@ -20,7 +20,12 @@ class FightMenu
     @keys.down.onDown.add @keyDown, this
     @keys.left.onDown.add @keyLeft, this
     @keys.right.onDown.add @keyRight, this
+
+    @keys.A = @game.input.keyboard.addKey Phaser.Keyboard.A
     @keys.A.onDown.add @keyA, this
+
+    @keys.Z = @game.input.keyboard.addKey Phaser.Keyboard.Z
+    @keys.Z.onDown.add @keyA, this
 
     @cursor = [0, 0]
 
@@ -120,8 +125,8 @@ class FightMenu
     @addText 45, 220, "Attack"
     @addText 45, 265, "Magic"
     @addText 45, 310, "Items"
-    @addText 190, 220, "Naruto"
-    @addText 190, 265, "Sasuke"
+    @addText 190, 220, "Rick"
+    @addText 190, 265, "George"
     @addText 190, 310, "Sakura"
     @addText 320, 220, "HP 189/1450"
     @addText 320, 265, "HP 0/2390"
