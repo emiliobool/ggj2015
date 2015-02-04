@@ -1,5 +1,5 @@
 class Hero extends Phaser.Sprite
-	constructor: (@game) ->
+  constructor: (@game) ->
 
     super @game, 1920, 1500, 'player', 1 #x, y, frame
     @game.add.existing this
